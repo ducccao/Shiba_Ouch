@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shibat Ouch</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .img-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+            width: 700px;
+            position: relative;
+        }
+        
+        img {
+            width: 100%;
+        }
+        
+        #shiba-friends {}
+        
+        #shiba-ouch {
+            display: none;
+        }
+        
+        .shiba-img {}
+        
+        .btn-ouch {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translate(-75%, 0);
+            width: 20%;
+        }
+        
+        #fightSound {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-wrapper">
+            <img class="shiba-img" src="./img/shibarFriends.png" alt="Shibat Baseball Bat" id="shiba-friends" />
+            <img class="shiba-img" src="./img/shibaouch.jpg" alt="Shibat Baseball Bat" id="shiba-ouch" />
+            <button id="btnGame" class="btn btn-black text-white bg-dark btn-ouch">
+          Game ?
+        </button>
+        </div>
+
+        <audio controls id="fightSound">
+        <!-- <source src="./fightSound.mp3" /> -->
+        <source src="PUNCH.mp3" />
+      </audio>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function play() {
+            var audio = document.getElementById("fightSound");
+            audio.currentTime = 0;
+            audio.play();
+        }
+        const btnGame = $("#btnGame");
+        const shiba_ouch = $("#shiba-ouch");
+        const shiba_friends = $("#shiba-friends");
+
+        const audio = new Audio("fightSound.mp3");
+        btnGame.on("dbclick", (e) => {
+            play();
+        });
+
+        btnGame.on("click", (e) => {
+            play();
+
+            shiba_ouch.css({
+                display: "block",
+            });
+            shiba_friends.css({
+                display: "none",
+            });
+
+            setTimeout(() => {
+                shiba_ouch.css({
+                    display: "none",
+                });
+                shiba_friends.css({
+                    display: "block",
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
